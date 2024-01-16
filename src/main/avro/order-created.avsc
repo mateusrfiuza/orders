@@ -1,0 +1,39 @@
+{
+  "type": "record",
+  "namespace": "com.sample.orders.events",
+  "name": "OrderCreatedSchema",
+  "fields": [
+    {
+      "name": "orderId",
+      "doc": "Identifier of the Order that has been created.",
+      "type": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "sellerId",
+      "doc": "Identifier seller that placed the order.",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "customerId",
+      "doc": "Identifier of the customer that placed the order",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "sourceOriginDate",
+      "doc": "The date and time from the source system that triggered this event.",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    }
+  ]
+}
