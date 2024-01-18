@@ -5,16 +5,22 @@ This is a sample application showcasing the use of Hexagonal Architecture with D
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Architecture Definition](#Architecture-Definition)
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
-   - [Clone the repository](#clone-the-repository)
-   - [How to start](#how-to-start)
-      - [Calling Order Creation endpoint](#documentation-in-swagger)
-      - [Access Kafka Dashboard](#access-kafka-dashboard)
+     - [Clone the repository](#clone-the-repository)
+       - [How to start](#how-to-start)
+    - [Calling Order Creation endpoint](#Creating-a-new-Order)
+    - [Access Kafka Dashboard](#access-kafka-dashboard)
 
 ## Introduction
 
 This application serves as a template for building scalable and maintainable Java applications using modern technologies. It employs Hexagonal Architecture to separate the core business logic from the external components, making it easier to adapt to changes in the future.
+
+## Architecture Definition
+
+![Diagram of components](architecture_definition.jpg)
+
 
 ## Prerequisites
 
