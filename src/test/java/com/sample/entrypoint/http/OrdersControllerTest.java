@@ -2,9 +2,7 @@ package com.sample.entrypoint.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sample.domain.orders.usecase.CreateOrderUseCase;
-import com.sample.entrypoint.http.payload.CreationOrderRequest;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,8 +10,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.sample.entrypoint.fixture.CreationOrderRequestFixture.gimmeCreationOrderRequest;
-import static com.sample.entrypoint.fixture.CreationOrderRequestFixture.gimmeCreationOrderRequestWithoutItems;
+import static com.sample.fixture.CreationOrderRequestFixture.gimmeCreationOrderRequest;
+import static com.sample.fixture.CreationOrderRequestFixture.gimmeCreationOrderRequestWithoutItems;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;

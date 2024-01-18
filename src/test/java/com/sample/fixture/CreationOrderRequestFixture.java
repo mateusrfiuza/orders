@@ -1,4 +1,4 @@
-package com.sample.entrypoint.fixture;
+package com.sample.fixture;
 
 import com.sample.entrypoint.http.payload.CreationOrderRequest;
 import com.sample.entrypoint.http.payload.ItemCreationOrderRequest;
