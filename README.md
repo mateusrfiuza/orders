@@ -9,6 +9,7 @@ This is a sample application showcasing the use of Hexagonal Architecture with D
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
     - [Clone the repository](#clone-the-repository)
+    - [How to execute local tests](#how-to-execute-local-tests)
     - [How to start the application](#how-to-start)
 - [Starting the flow](#triggering-the-flow)
 - [Access Kafka Control Center Dashboard](#access-kafka-control-center-dashboard)
@@ -38,7 +39,11 @@ Before you begin, ensure you have the following installed:
      git clone https://github.com/mateusrfiuza/orders.git
       cd orders
      ```
-2. How to start:
+2. How to execute local tests:
+     ```
+      ./gradlew test
+     ```
+3. How to start:
 To start it you can run the command below:
      ```
       ./gradlew clean build bootRun
