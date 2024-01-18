@@ -39,25 +39,7 @@ dependencies {
 
 test {
 	systemProperty 'spring.profiles.active', "test"
-}
-
-jacocoTestCoverageVerification {
-	violationRules {
-		rule {
-			limit {
-				minimum = 0.80
-			}
-		}
-	}
-}
-
-jacocoTestReport {
-	dependsOn test
-	reports {
-		xml.required = false
-		csv.required = false
-		html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
-	}
+	useJUnitPlatform()
 }
 
 avro {

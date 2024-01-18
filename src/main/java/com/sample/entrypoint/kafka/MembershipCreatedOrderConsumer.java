@@ -2,7 +2,7 @@ package com.sample.entrypoint.kafka;
 
 import com.sample.domain.membership.usecase.ActivateMembershipUseCase;
 import com.sample.domain.membership.usecase.UpgradeMembershipUseCase;
-import com.sample.orders.events.OrderCreatedSchema;
+import com.sample.events.OrderCreatedSchema;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
