@@ -8,8 +8,8 @@ This is a sample application showcasing the use of Hexagonal Architecture with D
 - [Architecture Definition](#Architecture-Definition)
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
-     - [Clone the repository](#clone-the-repository)
-       - [How to start](#how-to-start)
+     - [Clone the repository](clone-the-repository)
+       - [How to start](##how-to-start)
     - [Calling Order Creation endpoint](#Creating-a-new-Order)
     - [Access Kafka Dashboard](#access-kafka-dashboard)
 
@@ -69,6 +69,6 @@ To start it you can run the command below:
   ```
 
 
-#### Access Kafka Dashboard:
+#### Access Kafka Control Center Dashboard:
 1. Open your browser
 2. Type in URL bar `http://127.0.0.1:9021/`
