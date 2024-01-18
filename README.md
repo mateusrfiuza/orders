@@ -9,7 +9,7 @@ This is a sample application showcasing the use of Hexagonal Architecture with D
 - [Setup](#setup)
    - [Clone the repository](#clone-the-repository)
    - [How to start](#how-to-start)
-      - [Documentation in `Swagger`](#documentation-in-swagger)
+      - [Calling Order Creation endpoint](#documentation-in-swagger)
       - [Access Kafka Dashboard](#access-kafka-dashboard)
 
 ## Introduction
@@ -38,9 +38,29 @@ To start it you can run the command below:
      ```
 
 
-#### Documentation in `Swagger`:
-1. Open your browser
-2. Type in URL bar `http://127.0.0.1:8080/swagger-ui.html`
+#### Creating a new Order:
+1. This endpoint will trigger all the flow, that will trigger the other components
+  ```
+      curl --location '127.0.0.1:8080/orders' \
+      --header 'Content-Type: application/json' \
+      --data '{
+        "sellerId": "sampleSellerId",
+        "customerId": "sampleCustomerId",
+        "items": [
+          {
+            "quantity": 2,
+            "itemId": "item1"
+          },
+          {
+            "quantity": 1,
+            "itemId": "item2"
+          }
+        ],
+        "orderDate": "2024-01-15T12:30:00Z",
+        "currency": "USD"
+      }
+      '
+  ```
 
 
 #### Access Kafka Dashboard:

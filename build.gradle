@@ -31,10 +31,6 @@ dependencies {
 	implementation 'org.apache.avro:avro:1.11.3'
 	implementation 'io.confluent:kafka-avro-serializer:5.1.2'
 
-	implementation 'io.springfox:springfox-swagger2:3.0.0'
-	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-	implementation 'io.springfox:springfox-boot-starter:3.0.0'
-
 	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
 	testRuntimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

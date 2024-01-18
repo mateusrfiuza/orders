@@ -28,13 +28,6 @@ public class OrdersController {
     }
 
     @PostMapping
-        @Operation(description = "Create a new Order")
-        @ApiResponses(value = {
-                @ApiResponse(responseCode = "202", description = "Order creation accepted"),
-                @ApiResponse(responseCode = "400", description = "Your parameters are invalid"),
-                @ApiResponse(responseCode = "500", description = "Some internal error happened"),
-        })
-    @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity<CreationOrderResponse> createOrder(@Valid @RequestBody final CreationOrderRequest request) {
         var orderId =  createOrderUseCase.execute(request.toCommand());
         return ResponseEntity
