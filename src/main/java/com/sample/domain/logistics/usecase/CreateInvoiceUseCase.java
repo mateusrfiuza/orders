@@ -6,10 +6,6 @@ import org.springframework.stereotype.Service;
 public class CreateInvoiceUseCase {
 
 
-
-
-
-
     public void execute() {
         System.out.println("Creating invoice");
     }
