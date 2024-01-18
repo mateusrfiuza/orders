@@ -1,5 +1,6 @@
 package com.sample.entrypoint.kafka;
 
+import com.sample.domain.logistics.usecase.CreateInvoiceUseCase;
 import com.sample.orders.events.OrderCreatedSchema;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
@@ -19,6 +20,12 @@ public class LogisticsCreatedOrderConsumer implements GenericKafkaConsumer<Strin
     private static final String TOPIC = "order_created_event";
     private static final String MAX_CONCURRENCY = "1";
 
+    private final CreateInvoiceUseCase createInvoiceUseCase;
+
+    public LogisticsCreatedOrderConsumer(final CreateInvoiceUseCase createInvoiceUseCase) {
+        this.createInvoiceUseCase = createInvoiceUseCase;
+    }
+
     @Override
     @KafkaListener(topics = {TOPIC}, containerFactory = LOGISTICS_CONTAINER_FACTORY, concurrency = MAX_CONCURRENCY)
     public void consume(final ConsumerRecord<String,OrderCreatedSchema> consumerRecord, final Acknowledgment acknowledgment) {
@@ -27,7 +34,8 @@ public class LogisticsCreatedOrderConsumer implements GenericKafkaConsumer<Strin
 
         logger.info("Logistics consumer received Order Created Event [ {} ], from: [ ORDERS-SERVICE ]", consumerRecord);
 
-        System.out.println(consumerRecord);
+        createInvoiceUseCase.execute();
+
         acknowledgment.acknowledge();
 
     }

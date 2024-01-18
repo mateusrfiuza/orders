@@ -1,5 +1,7 @@
 package com.sample.entrypoint.kafka;
 
+import com.sample.domain.membership.usecase.ActivateMembershipUseCase;
+import com.sample.domain.membership.usecase.UpgradeMembershipUseCase;
 import com.sample.orders.events.OrderCreatedSchema;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
@@ -19,6 +21,15 @@ public class MembershipCreatedOrderConsumer implements GenericKafkaConsumer<Stri
     private static final String TOPIC = "order_created_event";
     private static final String MAX_CONCURRENCY = "1";
 
+    private final ActivateMembershipUseCase activateMembershipUseCase;
+    private final UpgradeMembershipUseCase upgradeMembershipUseCase;
+
+    public MembershipCreatedOrderConsumer(final ActivateMembershipUseCase activateMembershipUseCase,
+                                          final UpgradeMembershipUseCase upgradeMembershipUseCase) {
+        this.activateMembershipUseCase = activateMembershipUseCase;
+        this.upgradeMembershipUseCase = upgradeMembershipUseCase;
+    }
+
     @Override
     @KafkaListener(topics = {TOPIC}, containerFactory = MEMBERSHIP_CONTAINER_FACTORY, concurrency = MAX_CONCURRENCY)
     public void consume(final ConsumerRecord<String, OrderCreatedSchema> consumerRecord, final Acknowledgment acknowledgment) {
@@ -27,7 +38,12 @@ public class MembershipCreatedOrderConsumer implements GenericKafkaConsumer<Stri
 
         logger.info("Membership consumer received Order Created Event: [ {} ], from: [ ORDERS-SERVICE ]", consumerRecord);
 
-        System.out.println(consumerRecord);
+        if (shouldActivate()) {
+            activateMembershipUseCase.execute();
+        } else {
+            upgradeMembershipUseCase.execute();
+        }
+
         acknowledgment.acknowledge();
 
     }
@@ -35,6 +51,10 @@ public class MembershipCreatedOrderConsumer implements GenericKafkaConsumer<Stri
     @Override
     public Logger getLogger() {
         return logger;
+    }
+
+    private boolean shouldActivate() {
+        return Math.random() < 0.5;
     }
 
 }
