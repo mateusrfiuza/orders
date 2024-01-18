@@ -5,13 +5,13 @@ This is a sample application showcasing the use of Hexagonal Architecture with D
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Architecture Definition](#Architecture-Definition)
+- [Architecture Definition](#architecture-definition)
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
-     - [Clone the repository](clone-the-repository)
-       - [How to start](##how-to-start)
-    - [Calling Order Creation endpoint](#Creating-a-new-Order)
-    - [Access Kafka Dashboard](#access-kafka-dashboard)
+    - [Clone the repository](#clone-the-repository)
+    - [How to start the application](#how-to-start)
+- [Starting the flow](#triggering-the-flow)
+- [Access Kafka Control Center Dashboard](#access-kafka-control-center-dashboard)
 
 ## Introduction
 
@@ -29,6 +29,7 @@ Before you begin, ensure you have the following installed:
 - Java 21 or later
 - Apache Gradle
 - Docker
+- Curl
 
 ## Setup
 
@@ -44,8 +45,8 @@ To start it you can run the command below:
      ```
 
 
-#### Creating a new Order:
-1. This endpoint will trigger all the flow, that will trigger the other components
+#### Triggering the flow:
+1. This endpoint will trigger an order creation, that will orchestrate the sequence
   ```
       curl --location '127.0.0.1:8080/orders' \
       --header 'Content-Type: application/json' \
