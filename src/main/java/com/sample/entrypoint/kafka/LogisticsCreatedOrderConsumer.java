@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 import static com.sample.entrypoint.kafka.config.KafkaConsumerConfig.LOGISTICS_CONTAINER_FACTORY;
+import static com.sample.entrypoint.kafka.config.KafkaConsumerConfig.LOGISTICS_GROUP_ID;
 
 @Component
 public class LogisticsCreatedOrderConsumer implements GenericKafkaConsumer<String,OrderCreatedSchema> {
@@ -27,7 +28,12 @@ public class LogisticsCreatedOrderConsumer implements GenericKafkaConsumer<Strin
     }
 
     @Override
-    @KafkaListener(topics = {TOPIC}, containerFactory = LOGISTICS_CONTAINER_FACTORY, concurrency = MAX_CONCURRENCY)
+    @KafkaListener(
+            topics = {TOPIC},
+            containerFactory = LOGISTICS_CONTAINER_FACTORY,
+            concurrency = MAX_CONCURRENCY,
+            groupId = LOGISTICS_GROUP_ID
+    )
     public void consume(final ConsumerRecord<String,OrderCreatedSchema> consumerRecord, final Acknowledgment acknowledgment) {
 
         Objects.requireNonNull(consumerRecord, "OrderCreatedSchema cannot be null.");

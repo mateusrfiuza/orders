@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 import static com.sample.entrypoint.kafka.config.KafkaConsumerConfig.MEMBERSHIP_CONTAINER_FACTORY;
+import static com.sample.entrypoint.kafka.config.KafkaConsumerConfig.MEMBERSHIP_GROUP_ID;
 
 @Component
 public class MembershipCreatedOrderConsumer implements GenericKafkaConsumer<String, OrderCreatedSchema> {
@@ -31,7 +32,12 @@ public class MembershipCreatedOrderConsumer implements GenericKafkaConsumer<Stri
     }
 
     @Override
-    @KafkaListener(topics = {TOPIC}, containerFactory = MEMBERSHIP_CONTAINER_FACTORY, concurrency = MAX_CONCURRENCY)
+    @KafkaListener(
+            topics = {TOPIC},
+            containerFactory = MEMBERSHIP_CONTAINER_FACTORY,
+            concurrency = MAX_CONCURRENCY,
+            groupId = MEMBERSHIP_GROUP_ID
+    )
     public void consume(final ConsumerRecord<String, OrderCreatedSchema> consumerRecord, final Acknowledgment acknowledgment) {
 
         Objects.requireNonNull(consumerRecord, "OrderCreatedSchema cannot be null.");

@@ -33,7 +33,9 @@ public class KafkaConsumerConfig {
     @Value("${spring.kafka.properties.schema.registry.url}")
     private String schemaRegistryURL;
 
-    public ConsumerFactory<String, String> consumerFactory(final String groupId) {
+
+    @Bean("kafkaListenerConsumerFactory")
+    public ConsumerFactory<String, String> consumerFactory() {
         final var kafkaProperties = new KafkaProperties();
         final var props = kafkaProperties.buildConsumerProperties((new DefaultSslBundleRegistry()));
 
@@ -54,7 +56,7 @@ public class KafkaConsumerConfig {
         final var factory = new ConcurrentKafkaListenerContainerFactory<String, String>();
 
         factory.setCommonErrorHandler(new DefaultErrorHandler());
-        factory.setConsumerFactory(consumerFactory(MEMBERSHIP_GROUP_ID));
+        factory.setConsumerFactory(consumerFactory());
         factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL_IMMEDIATE);
 
         return factory;
@@ -66,7 +68,7 @@ public class KafkaConsumerConfig {
         final var factory = new ConcurrentKafkaListenerContainerFactory<String, String>();
 
         factory.setCommonErrorHandler(new DefaultErrorHandler());
-        factory.setConsumerFactory(consumerFactory(LOGISTICS_GROUP_ID));
+        factory.setConsumerFactory(consumerFactory());
         factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL_IMMEDIATE);
 
         return factory;
