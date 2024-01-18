@@ -10,12 +10,12 @@ CREATE TABLE challenge.orders
     PRIMARY KEY (id)
 );
 
---CREATE TABLE challenge.orders_items
---(
---    id SERIAL NOT NULL,
---    product_id character varying(255) NOT NULL,
---    order_id INTEGER NOT NULL,
---    PRIMARY KEY (id),
---    CONSTRAINT ORDER_ITEM_UK01 UNIQUE (order_id, product_id),
---    FOREIGN KEY (order_id) REFERENCES challenge.orders(id)
---);
+CREATE TABLE challenge.orders_items
+(
+    id SERIAL NOT NULL,
+    product_id character varying(255) NOT NULL,
+    order_id INTEGER NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT ORDER_ITEM_UK01 UNIQUE (order_id, product_id),
+    FOREIGN KEY (order_id) REFERENCES challenge.orders(id)
+);
