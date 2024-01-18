@@ -43,8 +43,7 @@ Before you begin, ensure you have the following installed:
      ```
       ./gradlew test
      ```
-3. How to start:
-To start it you can run the command below:
+3. How to start the application:
      ```
       ./gradlew clean build bootRun
      ```
