@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.postgresql:postgresql:42.7.1'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
 	implementation 'org.springframework.kafka:spring-kafka'
 	implementation group: 'io.confluent', name: 'kafka-schema-registry-parent', version: '7.0.0', ext: 'pom'
@@ -32,9 +33,7 @@ dependencies {
 	implementation 'io.confluent:kafka-avro-serializer:5.1.2'
 
 	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-	testRuntimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.kafka:spring-kafka-test'
 }
 
 test {

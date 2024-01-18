@@ -2,7 +2,6 @@ package com.sample.entrypoint.http.payload;
 
 import com.sample.domain.orders.usecase.commands.CreateOrderCommand;
 import com.sample.domain.orders.usecase.commands.ItemCreateOrderCommand;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,7 +15,7 @@ public record CreationOrderRequest(
         @NotEmpty(message = "customer cannot be null")
         String customerId,
         @NotEmpty(message = "items should have at least one item")
-        Set<Item> items,
+        Set<ItemCreationOrderRequest> itemCreationOrderRequests,
         @NotNull(message = "orderDate cannot be null")
         Instant orderDate,
         @NotNull(message = "currency cannot be null")
@@ -24,8 +23,8 @@ public record CreationOrderRequest(
 ) {
 
     public CreateOrderCommand toCommand() {
-        final var commandItems = items().stream()
-                .map(item -> new ItemCreateOrderCommand(item.quantity(), item.itemId()))
+        final var commandItems = itemCreationOrderRequests().stream()
+                .map(itemCreationOrderRequest -> new ItemCreateOrderCommand(itemCreationOrderRequest.quantity(), itemCreationOrderRequest.itemId()))
                 .collect(Collectors.toSet());
 
         return new CreateOrderCommand(sellerId(), customerId(), commandItems, orderDate(), currency());
@@ -33,10 +32,3 @@ public record CreationOrderRequest(
 }
 
 
-record Item(
-        @Min(value = 1, message = "quantity should be at least one")
-        Long quantity,
-        @NotEmpty(message = "itemId cannot be null")
-        String itemId
-) {
-}

@@ -1,2 +1,8 @@
-package com.sample.domain.logistics.repository;public interface InvoiceRepository {
+package com.sample.domain.logistics.repository;
+
+public interface InvoiceRepository {
+
+    String saveInvoice();
+
+
 }
