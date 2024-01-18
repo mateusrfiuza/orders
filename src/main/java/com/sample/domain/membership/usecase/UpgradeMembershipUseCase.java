@@ -1,12 +1,16 @@
 package com.sample.domain.membership.usecase;
 
+import com.sample.dataprovider.repository.MembershipRepositoryImpl;
 import com.sample.domain.membership.dataprovider.event.MembershipNotifier;
 import com.sample.domain.membership.dataprovider.repository.MembershipRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UpgradeMembershipUseCase {
 
+    private static final Logger logger = LoggerFactory.getLogger(UpgradeMembershipUseCase.class);
     private final MembershipRepository membershipRepository;
     private final MembershipNotifier membershipNotifier;
 
@@ -18,7 +22,7 @@ public class UpgradeMembershipUseCase {
 
 
     public void execute() {
-        System.out.println("Upgrading membership");
+        logger.info("Upgrading membership");
         membershipRepository.save();
         membershipNotifier.notifyCustomer();
     }

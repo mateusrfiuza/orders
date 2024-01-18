@@ -23,7 +23,7 @@ import java.util.UUID;
 public class KafkaConsumerConfig {
 
     public static final String MEMBERSHIP_CONTAINER_FACTORY = "MEMBERSHIP_CONTAINER_FACTORY";
-    public static final String MEMBERSHIP_GROUP_ID = "MEMBERSHIP_CONTAINER_FACTORY";
+    public static final String MEMBERSHIP_GROUP_ID = "MEMBERSHIP_ID";
     public static final String LOGISTICS_CONTAINER_FACTORY = "LOGISTICS_CONTAINER_FACTORY";
     public static final String LOGISTICS_GROUP_ID = "LOGISTICS_GROUP_ID";
 
