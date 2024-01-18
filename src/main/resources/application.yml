@@ -35,10 +35,3 @@ logging:
         SQL: debug
 
 order.event.destinationTopic.OrderCreatedEvent: order_created_event
-
-
-
-#kafka:
-#  bootstrap-servers: http://localhost:9092
-#  schema-registry-url: http://localhost:9081
-#  request.timeout: 30000
