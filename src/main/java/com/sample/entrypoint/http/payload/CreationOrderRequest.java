@@ -15,7 +15,7 @@ public record CreationOrderRequest(
         @NotEmpty(message = "customer cannot be null")
         String customerId,
         @NotEmpty(message = "items should have at least one item")
-        Set<ItemCreationOrderRequest> itemCreationOrderRequests,
+        Set<ItemCreationOrderRequest> items,
         @NotNull(message = "orderDate cannot be null")
         Instant orderDate,
         @NotNull(message = "currency cannot be null")
@@ -23,7 +23,7 @@ public record CreationOrderRequest(
 ) {
 
     public CreateOrderCommand toCommand() {
-        final var commandItems = itemCreationOrderRequests().stream()
+        final var commandItems = items().stream()
                 .map(itemCreationOrderRequest -> new ItemCreateOrderCommand(itemCreationOrderRequest.quantity(), itemCreationOrderRequest.itemId()))
                 .collect(Collectors.toSet());
 
