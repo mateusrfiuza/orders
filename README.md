@@ -1,6 +1,6 @@
 # Getting Started
 
-This is a sample application showcasing the use of Hexagonal Architecture with Domain-Driven Design (DDD), Kafka, Spring Boot, and PostgreSQL. The application is designed to demonstrate the separation of concerns and the modularity of different layers.
+This is a sample application showcasing the use of Clean Architecture with Domain-Driven Design (DDD), Kafka, Spring Boot, and PostgreSQL. The application is designed to demonstrate the separation of concerns and the modularity of different layers.
 
 ## Table of Contents
 
@@ -27,7 +27,7 @@ This application serves as a template for building scalable and maintainable Jav
 
 Before you begin, ensure you have the following installed:
 
-- Java 21 or later
+- Java 21
 - Apache Gradle
 - Docker
 - Curl
