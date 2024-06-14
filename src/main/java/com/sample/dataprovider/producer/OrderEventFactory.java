@@ -3,7 +3,7 @@ package com.sample.dataprovider.producer;
 import com.sample.domain.orders.dataprovider.event.OrderCreatedEvent;
 import com.sample.domain.orders.dataprovider.event.OrderEvent;
 import com.sample.domain.orders.entity.OrderStatus;
-import com.sample.events.OrderCreatedSchema;
+import com.sample.orders.events.OrderCreatedSchema;
 import org.apache.avro.generic.GenericRecord;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.support.GenericMessage;
