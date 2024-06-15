@@ -16,7 +16,7 @@ This is a sample application showcasing the use of Clean Architecture with Domai
 
 ## Introduction
 
-This application serves as a template for building scalable and maintainable Java applications using modern technologies. It employs Hexagonal Architecture to separate the core business logic from the external components, making it easier to adapt to changes in the future.
+This application serves as a template for building scalable and maintainable Java applications using modern technologies. It employs Clean Architecture to separate the core business logic from the external components, making it easier to adapt to changes in the future.
 
 ## Architecture Definition
 
