@@ -1,7 +1,7 @@
 package com.sample.entrypoint.kafka;
 
 import com.sample.domain.logistics.usecase.CreateInvoiceUseCase;
-import com.sample.events.OrderCreatedSchema;
+import com.sample.orders.events.OrderCreatedSchema;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ public class LogisticsCreatedOrderConsumer implements GenericKafkaConsumer<Strin
             concurrency = MAX_CONCURRENCY,
             groupId = LOGISTICS_GROUP_ID
     )
-    public void consume(final ConsumerRecord<String,OrderCreatedSchema> consumerRecord, final Acknowledgment acknowledgment) {
+    public void consume(final ConsumerRecord<String, OrderCreatedSchema> consumerRecord, final Acknowledgment acknowledgment) {
 
         Objects.requireNonNull(consumerRecord, "OrderCreatedSchema cannot be null.");
 
