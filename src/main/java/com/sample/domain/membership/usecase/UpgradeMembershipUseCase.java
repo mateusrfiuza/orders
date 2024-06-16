@@ -1,6 +1,5 @@
 package com.sample.domain.membership.usecase;
 
-import com.sample.dataprovider.repository.MembershipRepositoryImpl;
 import com.sample.domain.membership.dataprovider.event.MembershipNotifier;
 import com.sample.domain.membership.dataprovider.repository.MembershipRepository;
 import org.slf4j.Logger;

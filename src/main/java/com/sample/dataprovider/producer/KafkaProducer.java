@@ -32,7 +32,6 @@ public class KafkaProducer implements GenericProducer<Message<GenericRecord>> {
         final var messageId = UUID.fromString(Objects.requireNonNull(value.getHeaders().get(MessageHeaders.ID)).toString());
         logger.info("Sending message to topic [ {} ], key [ {} ], messageId[ {} ]", topic, key, messageId);
         kafkaTemplate.send(value);
-
     }
 
 }

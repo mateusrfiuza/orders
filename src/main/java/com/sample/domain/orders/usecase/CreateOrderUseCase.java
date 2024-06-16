@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateOrderUseCase {
 
-    private final OrderRepository orderStorageRepository;
+    private final OrderRepository orderRepository;
     private final OrderNotifier orderNotifier;
 
     public CreateOrderUseCase(final OrderRepository orderRepository,
                               final OrderNotifier orderNotifier) {
-        this.orderStorageRepository = orderRepository;
+        this.orderRepository = orderRepository;
         this.orderNotifier = orderNotifier;
     }
 
@@ -24,7 +24,7 @@ public class CreateOrderUseCase {
     @Transactional
     public String execute(final CreateOrderCommand command) {
         final var order = Order.fromCreateOrderCommand(command);
-        var orderId = orderStorageRepository.saveOrder(order);
+        var orderId = orderRepository.saveOrder(order);
         orderNotifier.notify(new OrderCreatedEvent(orderId));
         return orderId;
     }
