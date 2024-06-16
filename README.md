@@ -5,7 +5,9 @@ This is a sample application showcasing the use of Clean Architecture with Domai
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Architecture Definition](#architecture-definition)
+- [Architecture Definition V1](#architecture-definition)
+- [Architecture Definition V2](#architecture-definition-bpmn)
+  - [Sequence Diagrams](#sequence-diagrams)
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
     - [Clone the repository](#clone-the-repository)
@@ -21,6 +23,16 @@ This application serves as a template for building scalable and maintainable Jav
 ## Architecture Definition
 
 ![Diagram of components](architecture_definition.jpg)
+
+## Architecture Definition V2 - BPMN
+
+![Diagram of components](architecture_definition_bpmn.png)
+
+### Sequence Diagrams
+
+![Diagram Initial Order](diagram_01.png)
+![Diagram Process Membership Order](diagram_02.png)
+![Diagram Process Physical Order](diagram_03.png)
 
 
 ## Prerequisites

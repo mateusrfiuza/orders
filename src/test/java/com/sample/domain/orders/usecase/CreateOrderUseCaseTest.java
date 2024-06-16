@@ -34,7 +34,7 @@ class CreateOrderUseCaseTest {
     private ArgumentCaptor<Order> orderCaptor;
 
     @Test
-    void should_execute_creation_order() {
+    void should_create_order_with_success() {
 
         // Given
         var command = gimmeValidCreateOrderCommand();

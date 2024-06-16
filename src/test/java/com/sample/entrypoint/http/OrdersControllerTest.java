@@ -2,10 +2,10 @@ package com.sample.entrypoint.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sample.domain.orders.usecase.CreateOrderUseCase;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,8 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest(OrdersController.class)
 class OrdersControllerTest {
 
     @Autowired
@@ -33,7 +32,7 @@ class OrdersControllerTest {
 
 
     @Test
-    void should_return_201_when_receive_a_valid_request_for_order_creation() throws Exception {
+    void shouldReturnCreatedStatusWhenValidOrderRequestIsProvided() throws Exception {
 
         // Given
         when(createOrderUseCase.execute(any())).thenReturn("1");
@@ -45,13 +44,13 @@ class OrdersControllerTest {
                 .content(objectMapper.writeValueAsString(request)));
 
         // Then
-        result.andExpect(status().isAccepted())
+        result.andExpect(status().isCreated())
                 .andExpect(jsonPath("$.orderId").value("1"))
                 .andReturn();
     }
 
     @Test
-    void should_return_400_when_receive_an_invalid_payload_for_order_creation() throws Exception {
+    void shouldReturnBadRequestStatusWhenOrderRequestWithoutItemsIsProvided() throws Exception {
 
         // Given
         var request = gimmeCreationOrderRequestWithoutItems();
